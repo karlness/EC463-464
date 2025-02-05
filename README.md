@@ -1,25 +1,41 @@
-# Pollux Navigation Interface
+# Pollux Interface
 
-The webpage lets users control Pollux and monitor its sensor data as it moves around.
+
+The Pollux Navigation Interface is a React-based web application that allows users to control Pollux and monitor its real-time sensor data.
 
 # Purpose 
-It provides real-time data and basic controls.
+This interface provides:
 
-
-# Features (In Progress)
-Navigation Display: A grid showing Pollux's path as it moves.
-Sensor Data: Live sensor readings from Pollux’s surroundings.
-Control Panel: Buttons to start, stop, and reset Pollux’s movements.
-Responsive Design: Works well on different screen sizes.
-
-
-# Future Plans
-Obstacle Detection: Pollux will be able to tell obstacles from walls, and falling.
-Remote Control: Add more controls for custom tasks.
+Real-time feedback on Pollux’s environment (sensor readings, obstacle detaction).
+Simple navigation controls (Start, Stop, Reset).
+An overview of Pollux’s path on a visual grid.
 
 
 
+# Next steps 
+Integrate Backend Communications
+
+Connect the React front end to the Node.js/Express server (via REST or Socket.IO) for real sensor data and real-time updates.
+Live Data & Path Updating
+
+Continuously fetch to sensor readings and navigation updates so the UI reflects Pollux’s movements in real time.
+
+
+Add more feedback or animations for buttons and sensor readouts.
+Possibly include a settings panel for user preferences (speed control, sensor thresholds, etc.).
+Testing & Deployment on Raspberry Pi
+Unit testing
+
+Test the app locally with actual hardware data.
+Deploy the production build and Node.js backend to the Pi for final integration.
+Extended Controls & Obstacle Handling
+
+Implement advanced control logic to handle remote/manual tasks.
+Integrate obstacle detection and “cliff detection” logic so the UI can warn or automatically stop Pollux.
+
+
+live at https://pollux22.netlify.app/ for now.
 
 # Photos
 
-![scren](pollux.png)
+![scren](pollux2.png)
