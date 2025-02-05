@@ -19,8 +19,8 @@ const App = () => {
 
   const startNavigation = () => {
     console.log('Starting navigation...');
-    // You could dynamically update CLIFF detection here
-    // setSensors(prev => ({ ...prev, CLIFF: someCliffDetectedValue }));
+    //dynamically update CLIFF detection here
+    
   };
 
   const stopNavigation = () => {
@@ -35,7 +35,7 @@ const App = () => {
   return (
     <div className="App">
       <header className="header">
-        {/* You can display battery or cliff detection here if you want */}
+        {/*display battery or cliff detection here */}
       </header>
       
       <div className="content">
@@ -57,14 +57,3 @@ const App = () => {
 };
 
 export default App;
-
-
-
-
-
-
-
-
-
-
-

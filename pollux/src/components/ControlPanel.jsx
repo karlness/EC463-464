@@ -11,5 +11,3 @@ const ControlPanel = ({ onStart, onStop, onReset }) => {
 };
 
 export default ControlPanel;
-
-

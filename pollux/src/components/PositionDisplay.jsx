@@ -21,4 +21,3 @@ const PositionDisplay = ({ path }) => {
 };
 
 export default PositionDisplay;
-

@@ -1,6 +1,4 @@
-
-
-  import React from 'react';
+import React from 'react';
 import './BatteryIndicator.css';
 
 const BatteryIndicator = ({ level = 100 }) => {

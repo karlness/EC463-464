@@ -9,7 +9,7 @@
 
 html, body {
   width: 100%;
-  height: 100vh; /* Change from 100% to 100vh */
+  height: 100vh; 
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(160deg, #4a90e2 0%, #40E0D0 100%) fixed;
   display: flex;
@@ -149,9 +149,3 @@ html, body {
   /* Example: show path with a slight color or highlight */
   background-color: rgba(0, 150, 255, 0.2);
 }
-
-
-
-
-
-

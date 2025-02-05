@@ -27,5 +27,3 @@ const SensorData = ({ sensors }) => {
 };
 
 export default SensorData;
-
-
