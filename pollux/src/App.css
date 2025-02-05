@@ -194,3 +194,190 @@ html, body {
   padding-top: 80px; 
   padding-bottom: 40px;
 }
+
+
+
+
+
+/* =========================
+   RESET & GLOBAL STYLES
+   ========================= */
+   * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    /* Fill entire viewport so the gradient covers everything */
+    width: 100%;
+    min-height: 100vh;
+  
+    /* Font & color */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+  
+    /* Gradient background from top-left to bottom-right */
+    background: linear-gradient(160deg, #4a90e2 0%, #40E0D0 100%);
+  }
+  
+  /* =========================
+     APP CONTAINER
+     ========================= */
+  .App {
+    /* Make .App a vertical flex container, centered */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+    /* Also fill the screen so the gradient shows fully */
+    min-height: 100vh;
+    width: 100%;
+    max-width: 900px;
+  
+    /* Extra padding to accommodate the fixed header */
+    padding-top: 80px;
+    padding-bottom: 40px;
+  }
+  
+  /* =========================
+     HEADER
+     ========================= */
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    padding: 1rem 2rem;
+  
+    /* White w/ slight translucency & blur */
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(5px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  
+    text-align: center;
+  }
+  
+  .title {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #333;
+  }
+  
+  /* =========================
+     MAIN CONTENT
+     ========================= */
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  
+    /* A bit of spacing between child elements */
+    gap: 1.5rem;
+    margin-top: 2rem;
+    padding: 0 1rem;
+  }
+  
+  /* =========================
+     SENSOR DATA (CARD)
+     ========================= */
+  .sensor-data {
+    width: 100%;
+    max-width: 600px;
+  
+    /* "Card" styling */
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 0.5rem;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  
+    text-align: left;
+  }
+  
+  .sensor-data h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    color: #555;
+  }
+  
+  .sensor-data li {
+    margin: 0.3rem 0;
+  }
+  
+  /* =========================
+     CONTROL PANEL (BUTTONS)
+     ========================= */
+  .control-panel {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+  
+  .control-panel button {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 0.3rem;
+  
+    background: #f0f0f0;
+    color: #333;
+    transition: all 0.25s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .control-panel button:hover {
+    background: #e0e0e0;
+  }
+  
+  .control-panel button:active {
+    transform: scale(0.98);
+  }
+  
+  /* =========================
+     POSITION DISPLAY (GRID)
+     ========================= */
+  .position-display {
+    width: 100%;
+    max-width: 400px;
+    height: 400px;
+  
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+  
+    /* "Card" styling */
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  
+    /* Let’s show subtle grid lines */
+    background-image:
+      linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+  
+    overflow: hidden;
+  }
+  
+  .position-display div {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 150, 255, 0.2); /* Example color for each cell */
+  }
+  
+  /* =========================
+     BATTERY INDICATOR
+     ========================= */
+  .battery-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    /* add any other battery styles here */
+  }
+  
