@@ -5,15 +5,27 @@ const SensorData = ({ sensors }) => {
     <div className="sensor-data">
       <h3>Data</h3>
       <ul>
-        {Object.keys(sensors).map((sensor) => (
-          <li key={sensor}>
-            {sensor}: {sensors[sensor]} inch/es
-          </li>
-        ))}
+        {Object.entries(sensors).map(([sensorName, sensorValue]) => {
+          // If it's the "CLIFF" sensor, we interpret true/false => Yes/No
+          if (sensorName === 'CLIFF') {
+            return (
+              <li key={sensorName}>
+                {sensorName}: {sensorValue ? 'Yes' : 'No'}
+              </li>
+            );
+          }
+          // Otherwise display numeric reading
+          return (
+            <li key={sensorName}>
+              {sensorName}: {sensorValue} inch/es
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
-}
+};
 
 export default SensorData;
+
 

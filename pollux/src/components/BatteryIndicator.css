@@ -1,0 +1,40 @@
+.battery-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0.5rem 0; /* Some spacing around the battery */
+  }
+  
+  .battery-body {
+    width: 60px;
+    height: 25px;
+    border: 2px solid #333;
+    border-radius: 4px;
+    position: relative;
+    background-color: #fff;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.2);
+    overflow: hidden; /* So fill doesn't overflow corners */
+  }
+  
+  .battery-cap {
+    width: 6px;
+    height: 15px;
+    margin-left: -2px; /* Tuck it into the body’s border */
+    border: 2px solid #333;
+    border-radius: 2px;
+    background-color: #fff;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.2);
+  }
+  
+  /* The fill that displays the battery level */
+  .battery-level {
+    height: 100%;
+    transition: width 0.3s ease;
+  }
+  
+  /* Text to the side, showing numeric percent */
+  .battery-text {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #333;
+  }
