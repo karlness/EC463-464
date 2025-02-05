@@ -157,3 +157,40 @@ html, body {
   ...
 }
 /* All other CSS classes go here */
+
+
+
+
+/* Reset and global */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  /* Key: ensure the gradient covers the full viewport */
+  min-height: 100vh;
+
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(160deg, #4a90e2 0%, #40E0D0 100%);
+  color: #333;
+}
+
+/* App container */
+.App {
+  /* If you want the .App itself to be a flex column: */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  /* Force the .App to fill the full height so the gradient is always visible */
+  min-height: 100vh;
+  width: 100%;
+  max-width: 900px;
+
+  /* Space for the fixed header */
+  padding-top: 80px; 
+  padding-bottom: 40px;
+}
