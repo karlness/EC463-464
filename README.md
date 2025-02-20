@@ -34,8 +34,8 @@ Implement advanced control logic to handle remote/manual tasks.
 Integrate obstacle detection and “cliff detection” logic so the UI can warn or automatically stop Pollux.
 
 
-live at https://pollux22.netlify.app/ for now.
+live at https://polluxrobot.com/
 
 # Photos
 
-![scren](pollux2.png)
+![scren](pollux.png)
