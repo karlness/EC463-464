@@ -1,59 +1,84 @@
-import React, { useState } from 'react';
-import PositionDisplay from './components/PositionDisplay';
-import SensorData from './components/SensorData';
-import ControlPanel from './components/ControlPanel';
-import BatteryIndicator from './components/BatteryIndicator';
+import React, { useEffect, useState } from 'react'
 
-const App = () => {
-  const [path, setPath] = useState([]);
+function App() {
+  const [ultrasonic, setUltrasonic] = useState([])
+  const [apiBase, setApiBase] = useState("http://10.0.0.92:5000/api") 
+  // ^ Adjust IP as needed; or use relative paths if served from same domain
 
-  // Example sensor data, with cliff detection as boolean
-  const [sensors, setSensors] = useState({
-    FRONT: 30,
-    RIGHT: 10,
-    LEFT: 5,
-    CLIFF: false, // false = no, true = yes
-  });
+  useEffect(() => {
+    // Fetch sensor data on mount, and optionally poll every few seconds
+    const fetchSensors = async () => {
+      try {
+        const response = await fetch(`${apiBase}/sensors`)
+        const data = await response.json()
+        setUltrasonic(data.ultrasonic || [])
+      } catch (err) {
+        console.error(err)
+      }
+    }
 
-  const [batteryLevel, setBatteryLevel] = useState(75);
+    fetchSensors()
+    const interval = setInterval(fetchSensors, 3000) // poll every 3s
+    return () => clearInterval(interval)
+  }, [apiBase])
 
-  const startNavigation = () => {
-    console.log('Starting navigation...');
-    //dynamically update CLIFF detection here
-    
-  };
+  const sendMotorCmd = async (cmd) => {
+    try {
+      await fetch(`${apiBase}/motor_cmd`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ cmd })
+      })
+      alert("Sent motor_cmd: " + cmd)
+    } catch (err) {
+      console.error(err)
+      alert("Error sending motor_cmd")
+    }
+  }
 
-  const stopNavigation = () => {
-    console.log('Stopping navigation...');
-  };
+  const handleStop = async () => {
+    try {
+      const response = await fetch(`${apiBase}/stop`, { method: 'POST' })
+      const data = await response.json()
+      console.log(data)
+    } catch (err) {
+      console.error(err)
+    }
+  }
 
-  const resetPath = () => {
-    setPath([]);
-    console.log('Path reset.');
-  };
+  const handleStart = async () => {
+    try {
+      const response = await fetch(`${apiBase}/start`, { method: 'POST' })
+      const data = await response.json()
+      console.log(data)
+    } catch (err) {
+      console.error(err)
+    }
+  }
 
   return (
-    <div className="App">
-      <header className="header">
-        {/*display battery or cliff detection here */}
-      </header>
-      
-      <div className="content">
-        <h2 className="title">Pollux Navigation</h2>
+    <div style={{ padding: '1rem' }}>
+      <h1>Pollux Robot Web Interface</h1>
 
-        <SensorData sensors={sensors} />
-        <BatteryIndicator level={batteryLevel} />
+      <section style={{ marginBottom: '1rem' }}>
+        <h2>Sensor Data</h2>
+        <p>Ultrasonic readings: {ultrasonic.join(', ')}</p>
+      </section>
 
-        <ControlPanel
-          onStart={startNavigation}
-          onStop={stopNavigation}
-          onReset={resetPath}
-        />
-        
-        <PositionDisplay path={path} />
-      </div>
+      <section style={{ marginBottom: '1rem' }}>
+        <h2>Motor Control</h2>
+        <button onClick={() => sendMotorCmd(0)}>Forward (cmd=0)</button>
+        <button onClick={() => sendMotorCmd(1)}>Backward (cmd=1)</button>
+        <button onClick={() => sendMotorCmd(6)}>Stop (cmd=6)</button>
+      </section>
+
+      <section style={{ marginBottom: '1rem' }}>
+        <h2>Quick Start/Stop</h2>
+        <button onClick={handleStart}>Start Robot</button>
+        <button onClick={handleStop}>Stop Robot</button>
+      </section>
     </div>
-  );
-};
+  )
+}
 
-export default App;
+export default App
